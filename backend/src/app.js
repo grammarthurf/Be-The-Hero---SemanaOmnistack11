@@ -1,12 +1,14 @@
 const express = require('express');
 const routes = require('./routes');
-const cors = require('cors')
+const { errors } = require('celebrate');
+const cors = require('cors');
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 app.use(routes);
+app.use(errors());
 
 // MÉTODOS HTTP: 
 // GET: Buscar/Listar informações do back-end
@@ -22,4 +24,4 @@ app.use(routes);
 // Request Body: Corpo da requisição, utilizado para criar ou alterar recursos (/users)
 // -> Acessa com request.body
 
-app.listen(3333);
+module.exports = app;
